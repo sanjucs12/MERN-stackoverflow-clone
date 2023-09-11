@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"; //REPLACEMENT FOR <a> TAG
 import logo from "../../assets/logo.png";
 import "./navbar.css";
 import search from "../../assets/search-icon.svg";
-import Button from "../button/Button";
 import Avatar from "../avatar/Avatar";
 
 const Navbar = () => {
@@ -33,10 +32,22 @@ const Navbar = () => {
           </Link>
         ) : (
           <>
-            <Link to="/">
-              <Avatar>Sanju</Avatar>
-            </Link>
-            <Button>Log out</Button>
+            <Avatar
+              backgroundColor="#009dff"
+              px="10px"
+              py="7px"
+              color="white"
+              borderRadius="50%"
+            >
+              <Link
+                to="/User"
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                S
+              </Link>
+            </Avatar>
+
+            <button className="nav-item nav-links">Log out</button>
           </>
         )}
       </div>
