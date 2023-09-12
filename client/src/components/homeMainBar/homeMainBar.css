@@ -25,8 +25,9 @@
   transition: 0.3s;
 }
 
-.main-bar-header .ask-btn :hover {
+.main-bar-header .ask-btn:hover {
   background-color: #0086d8;
+  cursor: pointer;
 }
 
 .display-question-container {
