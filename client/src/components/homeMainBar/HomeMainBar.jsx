@@ -1,45 +1,75 @@
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./homeMainBar.css";
 import QuestionsList from "./QuestionsList";
 
 const questionsList = [
   {
-    id: 1,
-    votes: 3,
+    _id: 1,
+    upVotes: 3,
+    downVotes: 2,
     noOfAnswers: 2,
-    title: "What is a function?",
-    body: "It meant to be",
-    tags: ["java", "node js", "react js", "mangodb"],
+    questionTitle: "What is a function?",
+    questionBody: "It meant to be",
+    questionTags: ["java", "node js", "react js", "mangodb"],
     userPosted: "sanju",
+    userId: 1,
     askedOn: "jan 1",
+    answer: [
+      {
+        answerBody: "Answer",
+        userAnswered: "Kumar",
+        answeredOn: "jan 02",
+        userId: 2,
+      },
+    ],
   },
   {
-    id: 2,
-    votes: 0,
+    _id: 2,
+    upVotes: 5,
+    downVotes: 2,
     noOfAnswers: 2,
-    title: "What is a function?",
-    body: "It meant to be",
-    tags: ["java", "node js", "react js", "mangodb"],
-    userPosted: "kushal",
+    questionTitle: "What is a function?",
+    questionBody: "It meant to be",
+    questionTags: ["java", "node js", "react js", "mangodb"],
+    userPosted: "sanju",
+    userId: 2,
     askedOn: "jan 1",
+    answer: [
+      {
+        answerBody: "Answer",
+        userAnswered: "Kumar",
+        answeredOn: "jan 02",
+        userId: 2,
+      },
+    ],
   },
   {
-    id: 3,
-    votes: 1,
+    _id: 3,
+    upVotes: 1,
+    downVotes: 2,
     noOfAnswers: 2,
-    title: "What is a function?",
-    body: "It meant to be",
-    tags: ["javascript", "R", "python"],
-    userPosted: "siddu",
+    questionTitle: "What is a function?",
+    questionBody: "It meant to be",
+    questionTags: ["java", "node js", "react js", "mangodb"],
+    userPosted: "sanju",
+    userId: 3,
     askedOn: "jan 1",
+    answers: [
+      {
+        answerBody: "Answer",
+        userAnswered: "Kumar",
+        answeredOn: "jan 02",
+        userId: 2,
+      },
+    ],
   },
 ];
 
 const HomeMainBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const user = null;
+  const user = 1;
 
   const checkAuthHandler = () => {
     if (user === null) {
