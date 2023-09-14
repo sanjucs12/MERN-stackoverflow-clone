@@ -15,7 +15,7 @@ const questionsList = [
     userPosted: "sanju",
     userId: 1,
     askedOn: "jan 1",
-    answer: [
+    answers: [
       {
         answerBody: "Answer",
         userAnswered: "Kumar",
@@ -35,7 +35,7 @@ const questionsList = [
     userPosted: "sanju",
     userId: 2,
     askedOn: "jan 1",
-    answer: [
+    answers: [
       {
         answerBody: "Answer",
         userAnswered: "Kumar",

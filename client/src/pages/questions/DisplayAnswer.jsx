@@ -6,7 +6,7 @@ import "./questionDetails.css";
 const DisplayAnswer = ({ question }) => {
   return (
     <div>
-      {question.answer.map((ans, index) => (
+      {question.answers.map((ans, index) => (
         <div className="display-ans" key={index}>
           <p>{ans.answerBody}</p>
           <div className="question-actions-user">
