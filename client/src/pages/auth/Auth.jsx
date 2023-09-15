@@ -3,13 +3,38 @@ import "./auth.css";
 import icon from "../../assets/icon.png";
 import AboutAuth from "./AboutAuth";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { signup, login } from "../../actions/authActions";
 
 const Auth = () => {
   const [isSignUpPage, setIsSignUpPage] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSwitch = () => {
     setIsSignUpPage(!isSignUpPage);
   };
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      return alert("PLEASE ENTER THE DETAILS");
+    }
+    if (isSignUpPage) {
+      if (!name || !email || !password) {
+        return alert("PLEASE ENTER THE DETAILS");
+      }
+      dispatch(signup({ name, email, password }, navigate));
+    } else {
+      dispatch(login({ email, password }, navigate));
+    }
+  };
+
   return (
     <section className="auth-section">
       {isSignUpPage && <AboutAuth />}
@@ -17,16 +42,30 @@ const Auth = () => {
         {!isSignUpPage && (
           <img src={icon} alt="stack overflow icon" className="login-logo" />
         )}
-        <form>
+        <form onSubmit={formSubmitHandler}>
           {isSignUpPage && (
             <label htmlFor="name">
               <h4>Display Name</h4>
-              <input type="text" id="name" name="name" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
             </label>
           )}
           <label htmlFor="email">
             <h4>Email</h4>
-            <input type="email" id="email" name="email" />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
           </label>
           <label htmlFor="password">
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -37,7 +76,14 @@ const Auth = () => {
                 </p>
               )}
             </div>
-            <input type="password" id="password" name="password" />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
             {isSignUpPage && (
               <p style={{ color: "#666767", fontSize: "13px" }}>
                 Passwords must contain at least eight <br />
