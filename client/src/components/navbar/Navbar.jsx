@@ -1,12 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom"; //REPLACEMENT FOR <a> TAG
 import logo from "../../assets/logo.png";
+import { useSelector, useDispatch } from "react-redux"; //to use the redux store
+import { useEffect } from "react";
 import "./navbar.css";
 import search from "../../assets/search-icon.svg";
 import Avatar from "../avatar/Avatar";
+import { setCurrentUser } from "../../actions/currentUserAction";
 
 const Navbar = () => {
-  var User = null;
+  const User = useSelector((state) => state.currentUserReducer);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setCurrentUser(JSON.parse(localStorage.getItem("profile"))));
+  }, [dispatch]);
+  // console.log(User);
   return (
     <nav className="main-nav">
       <div className="navbar">
